@@ -25,13 +25,12 @@ def scanD(D, Ck, minSupport):
         for can in Ck:
             if can.issubset(tid):
  #              if not ssCnt.has_key(can): ssCnt[can]=1
-                if not can in ssCnt.keys(): 
-                	ssCnt[can]=1
+                if can not in ssCnt: ssCnt[can]=1
                 else: ssCnt[can] += 1
-    numItems = float(len(list(D)))
+    numItems = float(len(D))
     retList = []
     supportData = {}
-    for key in ssCnt.keys():
+    for key in ssCnt:
         support = ssCnt[key]/numItems
         if support >= minSupport:
             retList.insert(0,key)
